@@ -9,12 +9,14 @@ body{
 }
 
 .btn-cumtom{
-    padding: 30px 40px;
+    /* padding: 30px 40px; */
+    height: 100px;
+    width: 200px;
     color:rgb(0, 255, 65) ;
     background-color: transparent;
     border: 2px solid;
     display: block;
-    margin: 20px auto;
+    /* margin: 20px auto; */
 }
 
 p{
@@ -27,13 +29,14 @@ p{
      color: rgb(13,2,8);
 }
 
-.card-cutom{
+.card-custom{
      box-shadow:  2px 2px 5px #00751a,  -2px -2px 5px #006817;
      height: 50px;
      border-radius: 20px;
      display: flex;
      align-items: center;
      justify-content: space-around;
+     margin-top: 10px;
 
 }
 

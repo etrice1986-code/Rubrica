@@ -25,18 +25,44 @@
     <section class="container-fluid my-5">
         <div class="row">
             <article class="col-12 col-md-4">
-               <h3 class="text-center">Mostra i contatti in rubrica</h3>
-               <button id="shwcontactsBtn" class="btn btn-cumtom">mostra contatti</button>
+               <h3 class="text-center mb-3">Mostra i contatti in rubrica</h3>
+               <button id="showContactsBtn" class="btn btn-cumtom">mostra contatti</button>
 
             </article>
 
             <article class="col-12 col-md-4">
-               Input e Aggiungi contatto
-            </article>
+                <div class="row">
+
+                    <div class="col-12">
+                       <h3 class="text-center mb-3">Aggiungi nuovo contatto</h3>
+
+                    </div>
+
+                    <div class="col-6">
+
+                        
+               <div class="input-group mb-3">
+                 <input type="text" class="form-control" placeholder="Username" aria-label="Username"            aria-describedby="basic-addon1">
+             </div>
+                     
+               <div class="input-group mb-3">
+                 <input type="number" class="form-control" placeholder="Phone Number" aria-label="Phone Number"            aria-describedby="basic-addon1">
+             </div>
+
+             </div>
+
+             <div class="col-6">
+                <button id="addContactBtn" class="btn btn-cumtom">Aggiungi contatto</button>
+             </div>
+
+            </div>
+      </article>
+
 
             <article class="col-12 col-md-4">
                cerca contatto
             </article>
+
         </div>
     </section>
 
@@ -44,15 +70,17 @@
      <section class="container">
         <div class="row justify-content-center">
 
-            <article id="contactswrapper" class="col-12 col-md-8">
-                <div class="card-cutom">
+
+            <article id="contactsWrapper" class="col-12 col-md-8">
+                <!-- <div class="card-custom">
                     <p class="lead">Nome</p>
                     <p>3333333333</p>
                     <i class="fa-solid fa-trash-can icon"></i>
 
-                </div>
+                </div> -->
 
             </article>
+
         </div>
      </section>
 

@@ -5,12 +5,28 @@
 
 //PASSO 3 : creare un metodo che mostra tutti i contatti
 
+//PASSO 4 : il metodo funziona ma crea delle duplicazioni, devo risolvere il problema e far si che non si duplichi
+
+
+// PASSO 5 : Abbiamo risolto ma vogliamo che il buttone Mostra Rubrica al secondo click nasconda le Rubrica
+
+
+//  Aggiunge contatto
+// 1. Creare um metodo per aggiungere contatti. questo metodo avra  bisono di un nuovo numero,
+
+// 2. Aggendo sulla lista dei nuovi contatti, pusheremo il nuovo contatto
+    
 
 //wrapper dei conttati
 let contactsWrapper = document.querySelector('#contactsWrapper');
 
 //Bottoni
 let showContactsBtn = document.querySelector('#showContactsBtn')
+
+let addContactBtn = document.querySelector('#addContactBtn')
+
+//variabile d'appoggio
+let check = false;
 
 const rubrica = {
 
@@ -23,24 +39,54 @@ const rubrica = {
     ],
 
     showContacts : function(){
+
+        contactsWrapper.innerHTML = '';
         this.lista_contatti.forEach( (contatto)=> {
             let div = document.createElement('div');
             div.classList.add('card-custom')
 
             div.innerHTML = `
             
-            <p class="lead">Nome</p>
-            <p>3333333333</p>
+            <p class="lead"> ${contatto.contact_name} </p>
+            <p> ${contatto.phone_number} </p>
             <i class="fa-solid fa-trash-can icon"></i>
             
             
             `;
            
-            contactsWrapper.appendChild('div');
+            contactsWrapper.appendChild(div);
 
         });
+    },
+
+    //Aggiungere nuovo contatto
+    addContact : function(newName, newNumber){
+        this.lista_contatti.push({contact_name : newName, phone_number : newNumber});
+
     }
        
 };
 
-rubrica.showContacts();
+showContactsBtn.addEventListener('click', ()=>{
+    if(check == false){
+        rubrica.showContacts();
+        check = true;
+        showContactsBtn.innerHTML = 'Nascondi contatti';
+
+    }else{
+        contactsWrapper.innerHTML = '';
+        check = false;
+        showContactsBtn.innerHTML = 'Mostra contatti';
+    }
+
+    //si puo anche fare direttamente cosi:
+
+    /* contactsWrapper.classlist.toggle('d-none')*/ 
+    //ma non è molto consigliato
+});
+
+// rubrica.showContacts();
+
+addContactBtn.addEventListener('click', ()=>{
+    rubrica.addContact('Pippo',  4252212225);
+})
