@@ -11,19 +11,35 @@
 // PASSO 5 : Abbiamo risolto ma vogliamo che il buttone Mostra Rubrica al secondo click nasconda le Rubrica
 
 
-//  Aggiunge contatto
+//  Aggiungere contatto
 // 1. Creare um metodo per aggiungere contatti. questo metodo avra  bisono di un nuovo numero,
 
 // 2. Aggendo sulla lista dei nuovi contatti, pusheremo il nuovo contatto
     
 
+// Rimozione contatto
+// 1. Creare un metodo che cancelli un contatto. Sappiamo gia che questo metodo utilizzera  .splice()
+
+// Rimazione contatto con gli Icone
+// 1. Utilizzare l'indice delle Icone per effettuare le splice.
+
+// 2. Catturare tutte le Icone
+
 //wrapper dei conttati
 let contactsWrapper = document.querySelector('#contactsWrapper');
 
 //Bottoni
-let showContactsBtn = document.querySelector('#showContactsBtn')
+let showContactsBtn = document.querySelector('#showContactsBtn');
 
-let addContactBtn = document.querySelector('#addContactBtn')
+let addContactBtn = document.querySelector('#addContactBtn');
+
+let removeContactBtn = document.querySelector('#removeContactBtn');
+
+// Input
+let nameInput = document.querySelector('#nameInput');
+let numberInput = document.querySelector('#numberInput');
+
+
 
 //variabile d'appoggio
 let check = false;
@@ -57,13 +73,57 @@ const rubrica = {
             contactsWrapper.appendChild(div);
 
         });
+
+        // Icone 
+         let icons = document.querySelectorAll('.icon')
+         icons.forEach( (icons, i)=>{
+            icons.addEventListener('click', ()=>{
+             
+                this.lista_contatti.splice(i, 1);
+                this.showContacts();
+            });
+         });
     },
 
     //Aggiungere nuovo contatto
     addContact : function(newName, newNumber){
-        this.lista_contatti.push({contact_name : newName, phone_number : newNumber});
+        if(newName && newNumber){
+            this.lista_contatti.push({contact_name : newName, phone_number : newNumber});
+            this.showContacts();
+
+
+            if(check == false){
+        // rubrica.showContacts();
+        check = true;
+        showContactsBtn.innerHTML = 'Nascondi contatti';
+
+            }
+
+        }else{
+            alert('devi inserire SIA nome SIA numero')
+        }
+
+    },
+
+    // Rimuovere contatto
+    removeContact : function(removedName){
+        
+        let names = this.lista_contatti.map( (contatto)=> contatto.contact_name);
+        let index = names.indexOf(removedName);
+        
+        if(index >= 0){
+            this.lista_contatti.splice(index, 1);
+            this.showContacts();
+
+            
+        if(check == false){
+        // rubrica.showContacts();
+        check = true;
+        showContactsBtn.innerHTML = 'Nascondi contatti';
+        }
 
     }
+ }
        
 };
 
@@ -88,5 +148,22 @@ showContactsBtn.addEventListener('click', ()=>{
 // rubrica.showContacts();
 
 addContactBtn.addEventListener('click', ()=>{
-    rubrica.addContact('Pippo',  4252212225);
+    rubrica.addContact(nameInput.value, numberInput.value);
+    nameInput.value = '';
+    numberInput.value = '';
+
+    // if(check == false){
+    //     // rubrica.showContacts();
+    //     check = true;
+    //     showContactsBtn.innerHTML = 'Nascondi contatti';
+
+    // }
+});
+
+removeContactBtn.addEventListener('click', ()=>{
+    rubrica.removeContact(nameInput.value)
 })
+
+// nameInput = {
+//     value : 'Matteo'
+// }
