@@ -1,0 +1,10 @@
+
+body{
+    background-color: rgb(15, 3, 9);
+    color:rgb(225, 114, 12);
+}
+
+.custom-shadow{
+    box-shadow: 2px 2px 5px,  rgb(225, 114, 12);
+}
+
